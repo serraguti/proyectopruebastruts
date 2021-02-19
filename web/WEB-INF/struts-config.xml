@@ -11,6 +11,12 @@
                    type="org.apache.struts.action.DynaActionForm">
             <form-property name="deptno" type="java.lang.String"/>
         </form-bean>
+        <form-bean name="FormInsertarDepartamento"
+                   type="org.apache.struts.action.DynaActionForm">
+            <form-property name="numero" type="java.lang.String"/>
+            <form-property name="nombre" type="java.lang.String"/>
+            <form-property name="localidad" type="java.lang.String"/>
+        </form-bean>
     </form-beans>
     
     <global-exceptions>
@@ -18,11 +24,16 @@
     </global-exceptions>
 
     <global-forwards>
+        <forward name="webinsertardepartamento" path="/webinsertardepartamento.jsp"/>
         <forward name="webdepartamentos" path="/webdepartamentos.jsp"/>
         <forward name="welcome"  path="/Welcome.do"/>
     </global-forwards>
 
     <action-mappings>
+        <action path="/ActionInsertarDepartamento" 
+                type="controllers.ActionInsertarDepartamento"
+                name="FormInsertarDepartamento"
+                scope="request"/>
         <action path="/ActionEliminarDepartamento" 
                 type="controllers.ActionEliminarDepartamento"
                 name="FormEliminarDepartamento"

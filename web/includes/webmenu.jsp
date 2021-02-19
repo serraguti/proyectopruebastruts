@@ -17,6 +17,11 @@
                     </html:link>
                 </li>
                 <li class="nav-item">
+                    <html:link href="webinsertardepartamento.jsp" styleClass="nav-link">
+                        Nuevo departamento
+                    </html:link>
+                </li>
+                <li class="nav-item">
                     <html:link href="webeliminardepartamento.jsp" 
                                styleClass="nav-link btn btn-outline-danger">
                         Eliminar departamento

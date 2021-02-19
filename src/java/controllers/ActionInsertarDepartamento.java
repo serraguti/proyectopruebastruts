@@ -10,12 +10,12 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.DynaActionForm;
 import repositories.RepositoryDepartamentos;
 
-public class ActionEliminarDepartamento extends org.apache.struts.action.Action {
+public class ActionInsertarDepartamento extends org.apache.struts.action.Action {
 
     RepositoryDepartamentos repo;
     
-    public ActionEliminarDepartamento(){
-        this.repo = new  RepositoryDepartamentos();
+    public ActionInsertarDepartamento(){
+        this.repo = new RepositoryDepartamentos();
     }
     
     @Override
@@ -23,14 +23,13 @@ public class ActionEliminarDepartamento extends org.apache.struts.action.Action 
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         DynaActionForm f = (DynaActionForm)form;
-        String dato = f.get("deptno").toString();
-        int deptno = Integer.parseInt(dato);
-        this.repo.eliminarDepartamento(deptno);
+        String dato = f.get("numero").toString();
+        int num = Integer.parseInt(dato);
+        String nom = f.get("nombre").toString();
+        String loc = f.get("localidad").toString();
+        this.repo.insertarDepartamento(num, nom, loc);
         ArrayList<Departamento> departamentos = this.repo.getDepartamentos();
-        //ACTUALIZAR EN PLUGIN
-        //COMO EL PLUGIN ESTA EN TODA LA APP, DEBEMOS ACTUALIZARLO PARA TODA
-        //LA APP, NO SOLO PARA LA PETICION
         request.getServletContext().setAttribute("LISTDEPARTAMENTOS", departamentos);
-        return mapping.findForward("webdepartamentos");
+        return mapping.findForward("webinsertardepartamento");
     }
 }
